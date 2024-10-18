@@ -50,6 +50,7 @@ window.addEventListener("load", function(){
                                 document.querySelector("#alert").innerText = responseText.success
                                     document.querySelector("#alert").
                                     classList.add("success")
+                                    window.location.replace("/thanks")
 
                             })
                     })
