@@ -27,4 +27,4 @@ $output = [
     'success' => $success_output
 ];
 
-echo json encode($output);
+echo json_encode($output);
