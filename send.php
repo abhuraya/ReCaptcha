@@ -23,7 +23,7 @@ if (isValid()) {
     $recaptcha = file_get_contents($recaptcha_url.'?secret='.
     $recaptcha_secret.'&response='. $recaptcha_response);
     $recaptcha = json_decode($recaptcha);
-    if($recaptcha->seccess == true && $recaptcha->score >= 0.5 && $recaptcha->action == "contact"){
+    if($recaptcha->success == true && $recaptcha->score >= 0.5 && $recaptcha->action == "contact"){
         //run email send routine
         $success_output = 'Your message was sent successfully.';
     }else{
