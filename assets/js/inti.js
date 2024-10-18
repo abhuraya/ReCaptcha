@@ -23,6 +23,24 @@ window.addEventListener("load", function(){
         if(valid){
             document.querySelector(".formfields").style.display = "none"
             document.querySelector("#alert").innerText = "Processing your submission, please wait... "
+            grecaptcha.ready(function(){
+                grecaptcha
+                    .execute("6LddrmQqAAAAAPhTydPmsawDvbzPkjl2jJ-h6G09", {
+                        action: "contact"
+                    })
+                    .then(function(token){
+                        let recaptchaResponse = document.getElementById("recaptchaResponse")
+                        recaptchaResponse.value = token
+                        fetch("/send.php", {
+                            method: "POST",
+                            body: new FormData(form),
+                        })
+                            .then((response) => response.text())
+                            .then((response) => {
+                                console.log(response)
+                            })
+                    })
+            })
         }
     })
 })
