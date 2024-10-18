@@ -37,7 +37,20 @@ window.addEventListener("load", function(){
                         })
                             .then((response) => response.text())
                             .then((response) => {
-                                console.log(response)
+                                const responseText = JSON.parse(response)
+                                if(responseText.error !== ""){
+                                    document.querySelector("#alert").
+                                    innerText = responseText.error
+                                    document.querySelector("#alert").
+                                    classList.add("error")
+                                    document.querySelector(".formfields").
+                                    style.display = "block"
+                                    return
+                                }
+                                document.querySelector("#alert").innerText = responseText.success
+                                    document.querySelector("#alert").
+                                    classList.add("success")
+
                             })
                     })
             })
